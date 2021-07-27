@@ -1,6 +1,6 @@
 # Battleship in C++
 
-This was a capstone project for an introductory computer science course. The purpose of the assignment was to introduce some basic operations in c++. The project required the inclusion of the following concepts: 
+This was a capstone project for an introductory computer science course. The purpose of the assignment was to introduce some basic operations in C++. The project required the inclusion of the following concepts: 
 
 1. Inputs and Output (I/O)
 2. Variables
