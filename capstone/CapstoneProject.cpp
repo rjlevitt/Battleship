@@ -1,13 +1,13 @@
 /**************************************************************
 / AUTHOR: Ryan Levitt
 / PURPOSE: Capstone Project for CSC-160
-/ DESCRIPTION: This is a mini version of the board battleship, 
-/              in which a user plays against the computer 
-/              trying to guess the placement of the computers 
-/              battleship before their ship get sunk! 
-/ DATE: Summer 2021 
+/ DESCRIPTION: This is a mini version of the board battleship,
+/              in which a user plays against the computer
+/              trying to guess the placement of the computers
+/              battleship before their ship get sunk!
+/ DATE: Summer 2021
 
-/*************************************************************/
+s*************************************************************/
 
 #include <iostream>
 #include <iomanip>
@@ -26,8 +26,8 @@ void displayBoard(char board[4][4]) {
 }
 
 int main()
-{   
-    
+{
+
     // 4. VARIABLES
     char a;
     bool userTurn = true;
@@ -37,8 +37,8 @@ int main()
     int userHitCount = 0;
     int computerHitCount = 0;
     string compFile;
-    string compLetter; 
-    
+    string compLetter;
+
     // ARRAYS
     int destroyer[2][2] = { {1,1}, {1,1} };
 
@@ -56,7 +56,7 @@ int main()
     {'2','o','o','o'}, {'3','o','o','o'}};
 
 
-    // load computer's board from file 
+    // load computer's board from file
     // 6. FILE I/O
     cout << "Choose a comptuer Board! Type either A, B, C: ";
     cin >> compLetter;
@@ -121,7 +121,7 @@ int main()
     // 7. ITERATION (LOOPS)
     while ( computerHitCount < 2 && userHitCount < 2 ) {
 
-        // user turn 
+        // user turn
         // 9. CONTROL
         if (userTurn) {
 
@@ -138,8 +138,8 @@ int main()
 
             // 9. CONTROL
             if (result == 's') {
-                
-                // user hit 
+
+                // user hit
                 computerHitCount += 1;
                 cout << "\nHIT!\n";
                 computerBoard[rowGuess][colGuess] = 'h';
@@ -153,28 +153,28 @@ int main()
 
             }
             else if (result == 'o') {
-                
-                // user miss 
+
+                // user miss
                 cout << "\nMISS!\n";
                 computerBoard[rowGuess][colGuess] = 'm';
                 shadowBoard[rowGuess][colGuess] = 'm';
                 cout << "\n" << "Shadow board" << "\n\n";
                 displayBoard(shadowBoard);
-                
+
                 // switch to the computer
                 userTurn = false;
                 cout << "\n" << setfill('*') << setw(80) << "\n";
             }
             else {
-                // repeat guess 
+                // repeat guess
 
                 cout << "\nTry again! You either entered something out of bounds or already guessed that space.\n";
                 cout << "\n" << "Shadow board" << "\n\n";
                 displayBoard(shadowBoard);
-                
+
                 // stay with the user
                 userTurn = true;
-            } 
+            }
         }
         else {
 
@@ -188,7 +188,7 @@ int main()
             // 9. CONTROL
             if (result == 's') {
 
-                // computer hit 
+                // computer hit
                 cout << "COMPUTER'S TURN\n\n";
 
                 userHitCount += 1;
@@ -204,7 +204,7 @@ int main()
             }
             else if (result == 'o') {
 
-                // computer miss 
+                // computer miss
                 cout << "COMPUTER'S TURN\n\n";
 
                 cout << "\nMISS!\n";
@@ -217,15 +217,15 @@ int main()
                 cout << "\n" << setfill('*') << setw(80) << "\n";
             }
             else {
-                // repeat guess 
-                
+                // repeat guess
+
                 // stay with the computer
                 userTurn = false;
             }
         }
     }
 
-    // Let the user know who won 
+    // Let the user know who won
     if (userHitCount < 2) {
         cout << "\n\nYou sunk the Computer's battleship! Congratulations!" << endl;
     }
@@ -237,7 +237,7 @@ int main()
     // 6. FILE I/O
     cout << "\n\nYou can see the game's results outputed to the text file: computer_board_results.txt" << endl;
     ofstream outFile("computer_board_results.txt");
-    
+
     // reveal computer's board
     outFile << "Results: Computer's Board.\n\n";
 
@@ -248,7 +248,7 @@ int main()
         outFile << "\n";
     }
     outFile.close();
- 
+
     return 0;
- 
+
 }
