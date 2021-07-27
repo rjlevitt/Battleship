@@ -8,13 +8,13 @@
 / DATE: Summer 2021 
 
 /*************************************************************/
+
 #include <iostream>
 #include <iomanip>
 #include <fstream>
 #include <string>
 
 using namespace std; 
-
 
 void displayBoard(char board[4][4]) {
     for (int i = 0; i < 4; i++) {
@@ -24,7 +24,6 @@ void displayBoard(char board[4][4]) {
         cout << "\n";
     }
 }
-
 
 int main()
 {   
@@ -40,7 +39,6 @@ int main()
     string compFile;
     string compLetter; 
     
-
     // ARRAYS
     int destroyer[2][2] = { {1,1}, {1,1} };
 
@@ -63,7 +61,7 @@ int main()
     cout << "Choose a comptuer Board! Type either A, B, C: ";
     cin >> compLetter;
     compFile = "computerBoard_" + compLetter + ".txt";
-    ifstream myfile("computerBoard_A.txt");
+    ifstream myfile(compFile);
     for (int i = 1; i < 4; i++) {
         for (int j = 1; j < 4; j++) {
             myfile >> a;
@@ -72,6 +70,7 @@ int main()
     }
 
     // Game Description
+    cout << "\n" << setfill('*') << setw(80) << "\n";
     cout << "\n\nWelcome to mini battleship! You will play on a 3 x 3 grid, with one ship, and try to guess the computer's ship before your ship gets sunk!" << "\n\n";
     cout << "The game relies on the following codes to display the board:" << "\n";
     cout << "o = open space" << "\n";
@@ -79,9 +78,8 @@ int main()
     cout << "x = unknown" << "\n";
     cout << "h = hit" << "\n";
     cout << "m = miss" << "\n";
-    cout << "\n" << "The program will output two gameboards, your board, and what you have learned of your opponents board (Shadow Board). Since you don't know their setup, your opponents board will initially be filled with x's." << "\n";
+    cout << "\n" << "The program will output two gameboards, your board, and what you have learned of your opponents board (shadow board). Since you don't know their setup, your opponents board will initially be filled with x's." << "\n";
 
-  
     // 7. ITERATION (LOOPS)
     cout << "\n" << "Your board" << "\n\n";
     displayBoard(userBoard);
@@ -91,7 +89,7 @@ int main()
     // Input User's Board Set Up
     // 3. INPUTS AND OUTPUT
     // 8. INTERACTION
-
+    cout << "\n" << setfill('*') << setw(80) << "\n";
     cout << "\n";
     cout << "Let's set up your board.\n\n";
     cout << "Enter two sets of adjacent coordinates for your battleship\n\n";
@@ -115,18 +113,20 @@ int main()
     // 7. ITERATION (LOOPS)
     cout << "\n" << "Here's your board setup" << "\n\n";
     displayBoard(userBoard);
- 
 
     // game play
     // 7. ITERATION (LOOPS)
-    cout << "\n" << "Let's begin!" << "\n\n";
+    cout << "\n" << setfill('*') << setw(80) << "\n";
+    cout << "\n" << "Let's begin!" << "\n";
+    cout << "\n" << setfill('*') << setw(80) << "\n";
+
     while ( computerHitCount < 2 && userHitCount < 2 ) {
 
         // user turn 
         // 9. CONTROL
         if (userTurn) {
 
-            cout << "\n" << "IT'S YOUR TURN\n\n";
+            cout << "IT'S YOUR TURN\n\n";
 
             // user guess
             cout << "Enter the row coordinate for your guess:";
@@ -142,7 +142,7 @@ int main()
                 
                 // user hit 
                 computerHitCount += 1;
-                cout << "\nHIT!\n" << endl;
+                cout << "\nHIT!\n";
                 computerBoard[rowGuess][colGuess] = 'h';
                 shadowBoard[rowGuess][colGuess] = 'h';
                 cout << "\n" << "Shadow board" << "\n\n";
@@ -150,6 +150,7 @@ int main()
 
                 // switch to the computer
                 userTurn = false;
+                cout << "\n" << setfill('*') << setw(80) << "\n";
 
             }
             else if (result == 'o') {
@@ -163,6 +164,7 @@ int main()
                 
                 // switch to the computer
                 userTurn = false;
+                cout << "\n" << setfill('*') << setw(80) << "\n";
             }
             else {
                 // repeat guess 
@@ -173,7 +175,6 @@ int main()
                 
                 // stay with the user
                 userTurn = true;
-     
             } 
         }
         else {
@@ -189,22 +190,23 @@ int main()
             if (result == 's') {
 
                 // computer hit 
-                cout << "\n" << "COMPUTER'S TURN\n\n";
+                cout << "COMPUTER'S TURN\n\n";
 
                 userHitCount += 1;
-                cout << "\nHIT!\n" << endl;
+                cout << "\nHIT!\n";
                 userBoard[rowGuess][colGuess] = 'h';
                 cout << "\n" << "Your board" << "\n\n";
                 displayBoard(userBoard);
 
                 // switch to the user
                 userTurn = true;
+                cout << "\n" << setfill('*') << setw(80) << "\n";
 
             }
             else if (result == 'o') {
 
                 // computer miss 
-                cout << "\n" << "COMPUTER'S TURN\n\n";
+                cout << "COMPUTER'S TURN\n\n";
 
                 cout << "\nMISS!\n";
                 userBoard[rowGuess][colGuess] = 'm';
@@ -213,6 +215,7 @@ int main()
 
                 // switch to the user
                 userTurn = true;
+                cout << "\n" << setfill('*') << setw(80) << "\n";
             }
             else {
                 // repeat guess 
@@ -230,6 +233,7 @@ int main()
     else {
         cout << "\n\nSorry, the Computer has annihilated your battleship. :(" << endl;
     }
+    cout << "\n" << setfill('*') << setw(80) << "\n";
 
     // 6. FILE I/O
     cout << "\n\nYou can see the game's results outputed to the text file: computer_board_results.txt" << endl;

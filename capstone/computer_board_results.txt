@@ -1,0 +1,6 @@
+Results: Computer's Board.
+
+  1 2 3 
+1 o o o 
+2 h o o 
+3 h o o 
