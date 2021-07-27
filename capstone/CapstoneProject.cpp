@@ -80,7 +80,6 @@ int main()
     cout << "m = miss" << "\n";
     cout << "\n" << "The program will output two gameboards, your board, and what you have learned of your opponents board (shadow board). Since you don't know their setup, your opponents board will initially be filled with x's." << "\n";
 
-    // 7. ITERATION (LOOPS)
     cout << "\n" << "Your board" << "\n\n";
     displayBoard(userBoard);
     cout << "\n" << "Opponent's shadow board" << "\n\n";
@@ -110,16 +109,16 @@ int main()
     userBoard[destroyer[0][0]][destroyer[0][1]] = 's';
     userBoard[destroyer[1][0]][destroyer[1][1]] = 's';
 
-    // 7. ITERATION (LOOPS)
     cout << "\n" << "Here's your board setup" << "\n\n";
     displayBoard(userBoard);
 
-    // game play
-    // 7. ITERATION (LOOPS)
+
     cout << "\n" << setfill('*') << setw(80) << "\n";
     cout << "\n" << "Let's begin!" << "\n";
     cout << "\n" << setfill('*') << setw(80) << "\n";
 
+    // game play
+    // 7. ITERATION (LOOPS)
     while ( computerHitCount < 2 && userHitCount < 2 ) {
 
         // user turn 
@@ -239,17 +238,15 @@ int main()
     cout << "\n\nYou can see the game's results outputed to the text file: computer_board_results.txt" << endl;
     ofstream outFile("computer_board_results.txt");
     
-    // title 
-    outFile << "Results: Computer's Board.\n\n";
-    
     // reveal computer's board
+    outFile << "Results: Computer's Board.\n\n";
+
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
             outFile << computerBoard[i][j] << " ";
         }
         outFile << "\n";
     }
-
     outFile.close();
  
     return 0;
